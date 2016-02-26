@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-xs-2" id="leftCol">
+	<ul class="nav nav-stacked panel" id="sendSidebar">
+	</ul>
+	<script type="text/javascript">
+	    $(function () {
+		$('#sendSidebar').affix({
+		    offset: {
+			top: 135
+		    }
+		});
+
+		$.scrollSpyBuild({
+		    scrollSpyContainer: "#sendSidebar",
+		    circleIconClass: ""
+		});
+
+		var $body = $(document.body);
+		var navHeight = $('.menu').outerHeight(true) + 10;
+
+		$body.scrollspy({
+		    target: '#leftCol'
+		});
+
+		$(".scrollTo").on("click", function (e) {
+		    e.preventDefault();
+		    var moveTo = $($(this).prop("hash"));
+		    $(".selectedElement").removeClass("selectedElement");
+
+		    if ($(this).parent().hasClass("doBorder"))
+			$($(this).prop("hash")).parent().addClass("selectedElement");
+
+		    scrollToElement(moveTo);
+		});
+	    });
+	</script>
+    </div>
+
+    <script type="text/javascript" src="/js/scrollspy.js"></script>
+
+    <div class="col-xs-10" id="taskSendPanel">
+	<div class="panel panel-success">
+	    <div class="panel-heading">
+		<h2 class="panel-title" id="basicinfo">
+		    <i class="fa fa-tasks"></i> Title
+		</h2>
+	    </div>
+	    <form action="/tasks" method="post" id="submitNewTaskForm">
+		<div class="panel-body">
+		    <div class="panel panel-warning">
+			<div class="panel-heading">
+			    <h4 id="common" class="panel-title">
+				<span class="fa fa-edit"></span> Level 1
+			    </h4>
+			</div>
+			<div class="panel-body">
+			    <div class="row">
+				<div class="col-sm-9">
+				    <div class="form-group">
+					<label>L1 title</label>
+					<input type="text" class="form-control" name="name" value="" />
+				    </div>
+				</div>
+				<div class="col-sm-3">
+				    <div class="form-group has-feedback has-warning">
+					<label>ISY number</label>
+					<input type="tel" class="form-control" name="isy" value="{main_isy}" required="" placeholder="ISY number of the task" />
+					<span class="fa fa-warning form-control-feedback" aria-hidden="true"></span>
+				    </div>
+				</div>
+			    </div>
+			    <div class="row">
+				<div class="col-sm-6">
+				    <div class="form-group has-feedback has-warning">
+					<label>Start date of the whole task</label>
+					<input type="text" class="form-control" id="startline" name="startline" value="{main_start_date}" required="" placeholder="Date when the task should be started" />
+					<span class="fa fa-warning form-control-feedback" aria-hidden="true"></span>
+				    </div>
+				</div>
+				<div class="col-sm-6">
+				    <div class="form-group has-feedback has-warning">
+					<label>End date of the whole task</label>
+					<input type="text" class="form-control" id="deadline" name="deadline" value="{main_end_date}" required="" placeholder="Date when the task should end" />
+					<span class="fa fa-warning form-control-feedback" aria-hidden="true"></span>
+				    </div>
+				</div>
+			    </div>
+
+			    <div class="row">
+				<div class="col-sm-6">
+				    <label id="description">Task description</label>
+				    <textarea name="descr" id="rte">{main_info}</textarea>
+				</div>
+				<div class="col-sm-6">
+				    <div class="row">
+					<label id="taskfolder">Task folder</label>
+					<input type="text" value="{main_url_link}" class="form-control" name="folder" id="currentJobLink"/>
+				    </div>
+				    <div class="row">
+					<a href="#" class="btn btn-warning btn-xs" id="browseFolders" data-basefolder="/KlingelSatellite">Add new</a>
+					<div id="foldertree">
+
+					</div>
+				    </div>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    <div class="panel panel-primary">
+			<div class="panel-heading">
+			    <h4 class="panel-title pull-left" id="files">
+				<span class="fa fa-file"></span> Files for the task ({fileslistcount})
+			    </h4>
+			    <a class="btn btn-primary btn-xs pull-right" data-toggle="collapse" href="#filesPanel">Show</a>
+			    <div class="clearfix"></div>
+			</div>
+			<div class="panel-body collapse" id="filesPanel">
+			    <div class="form-group has-feedback">
+				<label>Additional files</label>
+				<input type="file" name="taskfiles[]" class="uploadButton" multiple data-uploadname="taskfiles"/>
+			    </div>
+			    <div class="uploadContainer"></div>
+
+			    <!-- BEGIN hasfiles -->
+			    {fileslist}
+			    <!-- END hasfiles -->
+			</div>
+		    </div>
+		    <div class="row">
+			<div class="col-sm-12" >
+			    {send_details}
+			</div>
+		    </div>
+		</div>
+
+		<div class="panel-footer">
+		    <input type="hidden" name="switch" value="saveTask" />
+		    <input type="hidden" name="taskId" value="{taskid}" />
+		    <input type="hidden" name="clientId" value="{clientid}" />
+		    <input type="submit" value="Go!" class="btn btn-success btn-block" />
+		</div>
+	    </form>
+	</div>
+    </div>
+    <div class="clearfix"></div>
+</div>
