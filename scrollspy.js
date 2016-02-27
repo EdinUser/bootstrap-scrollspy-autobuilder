@@ -7,12 +7,20 @@
 
     var defaults = {
 	// These are the defaults.
+	
+	//Default container for the scrollspy itself
 	scrollSpyContainer: "#sendSidebar",
+	//Which container to be scanned for links
 	scrollSpyCollector: "#taskSendPanel",
+	//Tag for first level links
 	scrollSpyFirstLevel: "h4",
+	//Tag for second level links
 	scrollSpySecondLevel: "label",
+	//Class for icons in front of the second level links
 	circleIconClass: "glyphicon glyphicon-record",
+	//ID to be used for links without any
 	dummyLinksName: "scrollspylink",
+	//Starting number of "dummyLinksName"
 	dummyLinkId: 1
     };
 
