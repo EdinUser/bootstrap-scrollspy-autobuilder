@@ -7,7 +7,7 @@
 
     var defaults = {
 	// These are the defaults.
-	
+
 	//Default container for the scrollspy itself
 	scrollSpyContainer: "#sendSidebar",
 	//Which container to be scanned for links
@@ -51,11 +51,11 @@
 	    var el = $(el);
 	    var linkId = '';
 
-	    if (el.attr("id") === "undefined") {
+	    if (typeof el.attr("id") === "undefined") {
 		linkId = settings.dummyLinksName + settings.dummyLinkId;
+		el.attr("id", linkId);
 		settings.dummyLinkId++;
-	    }
-	    else {
+	    } else {
 		linkId = el.attr("id");
 	    }
 
@@ -76,8 +76,7 @@
 			subLinkId = settings.dummyLinksName + settings.dummyLinkId;
 			subel.attr("id", subLinkId);
 			settings.dummyLinkId++;
-		    }
-		    else {
+		    } else {
 			subLinkId = subel.attr("id");
 		    }
 
