@@ -25,71 +25,54 @@
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<style>
+	    .selectedElement{
+		border: 2px dashed #ff0000;
+	    }
+	    
+	    .doBorder .active{
+		border-right: 2px solid #ff0000
+	    }
+	</style>
     </head>
     <body>
 	<div class="container">
 	    <div class="row">
 		<div class="col-xs-2" id="leftCol">
-		    <ul class="nav nav-stacked panel" id="scrollSpyContainer">
-		    </ul>
-		    <script type="text/javascript">
-			$(function () {
-			    $('#scrollSpyContainer').affix({
-				offset: {
-				    top: 135
-				}
-			    });
-
-			    $.scrollSpyBuild({
-				scrollSpyContainer: "#scrollSpyContainer",
-				scrollSpyCollector: "#scrollSpyCollect"
-			    });
-
-			    var $body = $(document.body);
-			    var navHeight = $('.menu').outerHeight(true) + 10;
-
-			    $body.scrollspy({
-				target: '#leftCol'
-			    });
-
-			    $(".scrollTo").on("click", function (e) {
-				e.preventDefault();
-				var moveTo = $($(this).prop("hash"));
-				$(".selectedElement").removeClass("selectedElement");
-
-				if ($(this).parent().hasClass("doBorder")) {
-				    $($(this).prop("hash")).parent().addClass("selectedElement");
-				}
-
-				scrollToElement(moveTo);
-			    });
-			});
-
-
-			function scrollToElement(what) {
-			    if (what.length) {
-				$('html, body').animate({
-				    scrollTop: what.offset().top - $('.menu').height()
-				}, 1000);
-			    }
-			}
-		    </script>
+		    <!-- BASE for scrollspy -->
+		    <div id="scrollSpyContainer"></div>
 		</div>
 
 		<div class="col-xs-10" id="scrollSpyCollect">
 		    <div class="panel panel-success">
 			<div class="panel-heading">
-			    <h2 class="panel-title" id="basicinfo">
-				<i class="fa fa-tasks"></i> Title
-			    </h2>
+			    <h4 class="panel-title">
+				<i class="fa fa-tasks"></i> Panel title
+			    </h4>
 			</div>
 			<form action="/tasks" method="post">
 			    <div class="panel-body">
+				
+				<p>
+				    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id nulla sodales, sagittis nisl in, sollicitudin eros. Cras tristique tellus non ornare bibendum. Nulla in enim hendrerit dui tristique blandit. Donec condimentum nibh at ipsum ultricies, a bibendum elit placerat. Quisque aliquet varius tincidunt. Sed enim risus, rutrum at lacus eu, auctor pharetra nibh. Integer facilisis et dui et vehicula.
+				</p>
+				<p>
+				    Nunc risus arcu, aliquam gravida consectetur sit amet, condimentum ut quam. Aliquam magna ex, aliquet ut blandit sed, posuere id ligula. Etiam congue nunc eu eros viverra tempus. Proin vitae fringilla sem, vel aliquam tortor. Nulla interdum augue ut placerat porttitor. Nullam vitae velit maximus, imperdiet sem et, accumsan felis. Integer efficitur libero congue, vulputate felis ac, tincidunt velit. Proin euismod semper dui nec suscipit. Maecenas et odio nisi. Pellentesque ac lectus tincidunt, luctus augue ut, malesuada diam. Fusce placerat nisi et augue hendrerit, id feugiat mauris fringilla. Morbi facilisis luctus lectus a porttitor.
+				</p>
+				<p>
+				    Aenean vehicula finibus eros, sed ultricies nisi luctus ut. Ut faucibus nisi ex, vel finibus eros imperdiet sit amet. Sed mollis sed orci sit amet egestas. In eu nisi nec nunc ultrices vehicula. Nulla facilisi. Sed eros nibh, lobortis condimentum vehicula nec, rhoncus quis diam. Quisque semper volutpat pretium. Proin efficitur viverra congue. Maecenas elementum diam vel ante lobortis, in aliquet risus faucibus. In quis tortor nibh. Nullam lacus leo, vestibulum a nisi eget, vehicula maximus lacus. Aenean sit amet diam non metus elementum dignissim et id eros.
+				</p>
+				<p>
+				    Vestibulum mollis bibendum mauris non elementum. Etiam tincidunt magna nec est finibus efficitur. Praesent a turpis venenatis, tristique orci ac, sollicitudin elit. Cras sit amet enim sapien. Nullam accumsan leo metus, accumsan egestas eros pharetra a. Curabitur gravida quam sed ipsum mattis accumsan. Aenean tristique sem purus, eget sollicitudin tellus molestie vitae. Integer tincidunt enim libero, vel consectetur ipsum pharetra quis. Nullam feugiat mollis finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula a nulla sit amet vulputate. Proin consequat velit in rhoncus placerat. Maecenas nec velit at ipsum commodo aliquam nec at massa.
+				</p>
+				<p>
+				    Fusce vitae libero ut orci scelerisque varius. Vivamus eget tellus nec erat cursus semper id vel lacus. Morbi ut varius turpis. Duis a ante ut felis lacinia interdum. Nunc lobortis mollis elit, ut laoreet nulla efficitur vitae. Nunc vitae est libero. Suspendisse potenti. Ut lobortis metus et sem commodo, non tristique libero laoreet. Nam at dignissim libero. Praesent placerat dignissim turpis, eu interdum tortor rutrum malesuada. Vivamus eu varius est. Praesent vitae laoreet lorem. Aliquam finibus maximus ex, sit amet dictum quam dapibus a. Nam eleifend posuere erat, ut fermentum arcu mollis id. Suspendisse consectetur porta sem vel semper.
+				</p>
 				<div class="panel panel-warning">
 				    <div class="panel-heading">
 					<!-- The <h4> tag will be included as a first level, with internal link to its ID -->
-					<h4 id="common" class="panel-title">
-					    <span class="fa fa-edit"></span> Level 1
+					<h4 class="panel-title">
+					    <span class="fa fa-edit"></span> Title 1
 					</h4>
 				    </div>
 				    <div class="panel-body">
@@ -129,9 +112,54 @@
 				</div>
 				<div class="panel panel-primary">
 				    <div class="panel-heading">
-					<!-- The <h4> tag will be included as a first level, with internal link to its ID. Mind the unique ID! -->
-					<h4 class="panel-title pull-left" id="files">
+					<!-- The <h4> tag will be included as a first level, with internal link to its ID. -->
+					<h4 class="panel-title">
 					    <span class="fa fa-file"></span> Title 2
+					</h4>
+				    </div>
+				    <!-- This ID won't be fetched -->
+				    <div class="panel-body" id="filesPanel">
+					<div class="row">
+					    <div class="col-sm-6">
+						    <!-- The <label> tag will be included as a first level, with internal link to its ID. If none is provided, autogenerated one will be used -->
+						    <label>Input 5</label>
+						    <p class="form-control-static">Just a text</p>
+					    </div>
+					    <div class="col-sm-6">
+						<div class="form-group">
+						    <!-- The <label> tag will be included as a first level, with internal link to its ID. If none is provided, autogenerated one will be used -->
+						    <label>Input 6</label>
+						    <p class="form-control-static">Just a text</p>
+						</div>
+					    </div>
+					</div>
+				    </div>
+				</div>
+
+				<div class="panel panel-success">
+				    <div class="panel-heading">
+					<!-- The <h4> tag will be included as a first level, with internal link to its ID -->
+					<h4 class="panel-title">
+					    <span class="fa fa-edit"></span> Title 3
+					</h4>
+				    </div>
+				    <div class="panel-body">
+					<div class="row">
+					    <div class="col-sm-8 col-sm-offset-2">
+						    <!-- The <label> tag will be included as a first level, with internal link to its ID. If none is provided, autogenerated one will be used -->
+						    <label>Some text</label>
+						    <textarea class="form-control" name="name">Vestibulum mollis bibendum mauris non elementum. Etiam tincidunt magna nec est finibus efficitur. Praesent a turpis venenatis, tristique orci ac, sollicitudin elit. Cras sit amet enim sapien. Nullam accumsan leo metus, accumsan egestas eros pharetra a. Curabitur gravida quam sed ipsum mattis accumsan. Aenean tristique sem purus, eget sollicitudin tellus molestie vitae. Integer tincidunt enim libero, vel consectetur ipsum pharetra quis. Nullam feugiat mollis finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula a nulla sit amet vulputate. Proin consequat velit in rhoncus placerat. Maecenas nec velit at ipsum commodo aliquam nec at massa.
+
+Fusce vitae libero ut orci scelerisque varius. Vivamus eget tellus nec erat cursus semper id vel lacus. Morbi ut varius turpis. Duis a ante ut felis lacinia interdum. Nunc lobortis mollis elit, ut laoreet nulla efficitur vitae. Nunc vitae est libero. Suspendisse potenti. Ut lobortis metus et sem commodo, non tristique libero laoreet. Nam at dignissim libero. Praesent placerat dignissim turpis, eu interdum tortor rutrum malesuada. Vivamus eu varius est. Praesent vitae laoreet lorem. Aliquam finibus maximus ex, sit amet dictum quam dapibus a. Nam eleifend posuere erat, ut fermentum arcu mollis id. Suspendisse consectetur porta sem vel semper. </textarea>
+					    </div>
+					</div>
+				    </div>
+				</div>
+				<div class="panel panel-primary">
+				    <div class="panel-heading">
+					<!-- The <h4> tag will be included as a first level, with internal link to its ID. Mind the unique ID! -->
+					<h4 class="panel-title">
+					    <span class="fa fa-file"></span> Title 4
 					</h4>
 				    </div>
 				    <!-- This ID won't be fetched -->
@@ -168,6 +196,21 @@
 	</div>
 
 
-	<script src="bootstrap-scrollspy-autobuilder.js"></script>
+	<script src="bootstrap-scrollspy-autobuilder.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	    $(function () {
+		$.scrollSpyBuild({
+		    scrollSpyContainer: "#scrollSpyContainer",
+		    scrollSpyCollector: "#scrollSpyCollect"
+		});
+
+		var $body = $(document.body);
+
+		//Where to put the Scrollspy
+		$body.scrollspy({
+		    target: '#leftCol'
+		});
+	    });
+	</script>
     </body>
 </html>

@@ -31,3 +31,24 @@ $.scrollSpyBuild({
 	scrollSpyCollector: "#scrollSpyCollect"
 });
 ```
+
+### Options
+```javascript
+    //Default container for the scrollspy itself
+    scrollSpyContainer: "#scrollSpyContainer",
+    //Which container to be scanned for links
+    scrollSpyCollector: "#scrollSpyCollect",
+    //Tag for first level links
+    scrollSpyFirstLevel: "h4",
+    //Tag for second level links
+    scrollSpySecondLevel: "label",
+    //Class for icons in front of the second level links
+    circleIconClass: "glyphicon glyphicon-record",
+    //Add a hashtag to the url, default: false
+    changeAddress: false,
+    //ID to be used for links without any
+    dummyLinksName: "scrollspylink",
+    //Starting number of "dummyLinksName"
+    dummyLinkId: 1
+```
+
