@@ -1,23 +1,20 @@
 # bootstrap-scrollspy-autobuilder
 Bootstrap 3 Scrollspy auto builder
 
-### Reruirements
-This script is built for usage with [Bootstrap 3](http://getbootstrap.com/getting-started/#download "Bootstrap"). Without including the needed libraries for Bootstrap, you cannot use it, sorry :)
+### Requirements
+This script is built for usage with [Bootstrap 4](https://getbootstrap.com/docs/4.1/getting-started/introduction/ "Bootstrap"). Without including the needed libraries for Bootstrap, you cannot use it, sorry :)
 
 ```html
-<!-- JQuery 2.2.1 -->
-<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+<!-- JQuery 3 slim -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
-<!-- CDN for version 3.3.6, taken from the Bootstrap site -->
+<!-- CDN for version 4.1.3, taken from the Bootstrap site -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <!-- The script itself -->
 <script src="bootstrap-scrollspy-autobuilder.js"></script>
 ```
@@ -25,7 +22,7 @@ This script is built for usage with [Bootstrap 3](http://getbootstrap.com/gettin
 ### Basic usage
 Just start it with pointing to the ID of the container, from where to collect the links, and container, where to put the generated Scrollspy
 
-``` javascript
+```javascript
 $.scrollSpyBuild({
 	scrollSpyContainer: "#scrollSpyContainer",
 	scrollSpyCollector: "#scrollSpyCollect"
@@ -34,21 +31,24 @@ $.scrollSpyBuild({
 
 ### Options
 ```javascript
+    const defaults = {
+    // These are the defaults.
     //Default container for the scrollspy itself
-    scrollSpyContainer: "#scrollSpyContainer",
+    scrollSpyContainer: "#sendSidebar",
     //Which container to be scanned for links
-    scrollSpyCollector: "#scrollSpyCollect",
+    scrollSpyCollector: "#taskSendPanel",
     //Tag for first level links
     scrollSpyFirstLevel: "h4",
     //Tag for second level links
     scrollSpySecondLevel: "label",
     //Class for icons in front of the second level links
-    circleIconClass: "glyphicon glyphicon-record",
-    //Add a hashtag to the url, default: false
-    changeAddress: false,
+    circleIconClass: "fa fa-fw fa-arrow-right",
     //ID to be used for links without any
     dummyLinksName: "scrollspylink",
     //Starting number of "dummyLinksName"
-    dummyLinkId: 1
+    dummyLinkId: 1,
+    //Skip class name
+    skipWhenHasClass: "skipScrollSpy"
+};
 ```
 
