@@ -1,6 +1,5 @@
 (function ($) {
     //Autobuilder for a Bootstrap ScrollSpy
-    // Compatible with Bootstrap 3 and Bootstrap 4
     //TO DO: refresh when element is dynamically created
     $(window).on('activate.bs.scrollspy', function (e) {
         history.replaceState({}, "", $("a[href^='#']", e.target).attr("href") || location.hash);
@@ -65,14 +64,12 @@
 
             // const mainElement = $("<a/>").prop("href", "#" + linkId).attr("class", "list-group-item p-1 scrollTo").html(el.html()).prepend(circleIcon.clone());
             let mainElement = $("<div/>").addClass("list-group-item p-1").attr("id", "scrollLink" + linkId).append(
-                $("<a/>").prop("href", "#" + linkId).attr("class", "scrollTo").html(el.html()).prepend(circleIcon.clone())
+                $("<a/>").prop("href", "#" + linkId).attr("class", "scrollTo").html(el.html().trim()).prepend(circleIcon.clone())
             );
 
-            let subMenu = $("<div/>").attr("class", "list-group p-1");
             // let subMenuDetails = $("<small/>").attr("style", "display: block; padding: 5px");
-            mainElement.appendTo(leftSlider);
-
-            el.closest("div").find(settings.scrollSpySecondLevel).each(function (index, subEl) {
+            el.next("div").find(settings.scrollSpySecondLevel).each(function (index, subEl) {
+                let subMenu = $("<div/>").attr("class", "list-group p-1");
                 let subElement = $(subEl);
 
                 if (subElement.hasClass(settings.skipWhenHasClass)) {
@@ -96,8 +93,10 @@
                         .appendTo(subMenu);
                 }
                 // subMenuDetails.appendTo(mainElement);
+                subMenu.appendTo(mainElement);
             });
-            subMenu.appendTo($("#scrollLink" + linkId));
+
+            mainElement.appendTo(leftSlider);
         });
     };
 }(jQuery));
